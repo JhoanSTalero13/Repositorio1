@@ -56,13 +56,12 @@ public class Category {
         this.description = description;
     }
 
-    public List<Cabin> getRooms() {
+    public List<Cabin> getCabins() {
         return cabins;
     }
 
-    public void setRooms(List<Cabin> cabins) {
+    public void setCabins(List<Cabin> cabins) {
         this.cabins = cabins;
     }
-    
 }
 

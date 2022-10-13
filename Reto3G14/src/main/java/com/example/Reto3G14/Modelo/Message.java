@@ -52,13 +52,6 @@ public class Message {
         this.messageText = messageText;
     }
 
-    public Cabin getRoom() {
-        return cabin;
-    }
-
-    public void setRoom(Cabin cabin) {
-        this.cabin = cabin;
-    }
 
     public Cabin getCabin() {
         return cabin;

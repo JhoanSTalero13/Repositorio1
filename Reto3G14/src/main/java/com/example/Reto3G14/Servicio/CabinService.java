@@ -37,14 +37,14 @@ public class CabinService {
             }
         }
     }
-    public Cabin update(Cabin p){
-        if(p.getId()== null){
-            Optional<Cabin> cab= cabinRepository.getCabin(p.getId());
+    public Cabin update(Cabin cabin){
+        if(cabin.getId()== null){
+            Optional<Cabin> cab= cabinRepository.getCabin(cabin.getId());
             if(cab.isPresent()){
-                cabinRepository.save(p);
+                cabinRepository.save(cabin);
             }
         }
-        return p;
+        return cabin;
     }
 
      
