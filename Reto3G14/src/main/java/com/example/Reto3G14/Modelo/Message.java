@@ -27,9 +27,9 @@ public class Message {
     private String messageText;
     
     @ManyToOne
-     @JoinColumn(name = "roomId")
+     @JoinColumn(name = "cabinId")
      @JsonIgnoreProperties({"messages","reservations"})
-     private Room room;
+     private Cabin cabin;
      
      @ManyToOne
      @JoinColumn(name = "clientId")
@@ -52,12 +52,20 @@ public class Message {
         this.messageText = messageText;
     }
 
-    public Room getRoom() {
-        return room;
+    public Cabin getRoom() {
+        return cabin;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setRoom(Cabin cabin) {
+        this.cabin = cabin;
+    }
+
+    public Cabin getCabin() {
+        return cabin;
+    }
+
+    public void setCabin(Cabin cabin) {
+        this.cabin = cabin;
     }
 
     public Client getClient() {

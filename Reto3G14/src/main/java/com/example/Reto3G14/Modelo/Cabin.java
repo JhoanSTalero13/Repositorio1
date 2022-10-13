@@ -21,28 +21,29 @@ import javax.persistence.Table;
  * @author MG1323
  */
 @Entity
-@Table(name ="room")
-public class Room {
+@Table(name ="cabin")
+public class Cabin {
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      private Integer id;
-     private String name;
-     private String hotel;
-     private Integer stars;
-     private String description;
+
+    private String name;
+    private String brand;
+    private Integer rooms;
+    private String description;
      
      
      @ManyToOne
      @JoinColumn(name = "categoryId")
-     @JsonIgnoreProperties("rooms")
+     @JsonIgnoreProperties("cabins")
      private Category category;
      
-     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "room")
-     @JsonIgnoreProperties({"room","client"})
+     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cabin")
+     @JsonIgnoreProperties({"cabin","client"})
      private List<Message> messages;
      
-     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "room")
-     @JsonIgnoreProperties({"room","messages"})
+     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cabin")
+     @JsonIgnoreProperties({"cabin","messages"})
      private List<Reservation> reservations;
 
     public Integer getId() {
@@ -61,20 +62,28 @@ public class Room {
         this.name = name;
     }
 
-    public String getHotel() {
-        return hotel;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setHotel(String hotel) {
-        this.hotel = hotel;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public Integer getStars() {
-        return stars;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setStars(Integer stars) {
-        this.stars = stars;
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public Integer getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Integer rooms) {
+        this.rooms = rooms;
     }
 
     public String getDescription() {
@@ -83,14 +92,6 @@ public class Room {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 
     public List<Message> getMessages() {

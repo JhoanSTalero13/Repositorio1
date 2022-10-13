@@ -4,8 +4,8 @@
  */
 package com.example.Reto3G14.Repositorio;
 
-import com.example.Reto3G14.Interface.RoomInterface;
-import com.example.Reto3G14.Modelo.Room;
+import com.example.Reto3G14.Interface.CabinInterface;
+import com.example.Reto3G14.Modelo.Cabin;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,24 +13,24 @@ import org.springframework.stereotype.Repository;
 
   @Repository
 
-public class RoomRepository {
+public class CabinRepository {
      @Autowired
-    private RoomInterface extensionesCrud;
+    private CabinInterface extensionesCrud;
     
-    public List<Room> getAll(){
-        return (List<Room>) extensionesCrud.findAll();
+    public List<Cabin> getAll(){
+        return (List<Cabin>) extensionesCrud.findAll();
     }
     
-    public Optional<Room> getRoom(int id){
+    public Optional<Cabin> getCabin(int id){
         return extensionesCrud.findById(id);
     }
     
-    public Room save (Room room){
-        return extensionesCrud.save(room);
+    public Cabin save (Cabin cabin){
+        return extensionesCrud.save(cabin);
     } 
     
-    public void delete (Room room){
-        extensionesCrud.delete(room);
+    public void delete (Cabin cabin){
+        extensionesCrud.delete(cabin);
     }
 
 

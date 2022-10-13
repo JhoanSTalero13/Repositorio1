@@ -4,13 +4,13 @@
  */
 package com.example.Reto3G14.Interface;
 
-import com.example.Reto3G14.Modelo.Room;
+import com.example.Reto3G14.Modelo.Cabin;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author MG1323
  */
-public interface RoomInterface extends CrudRepository <Room , Integer > {
+public interface CabinInterface extends CrudRepository <Cabin, Integer > {
     
 }
