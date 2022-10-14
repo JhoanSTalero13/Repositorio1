@@ -5,46 +5,33 @@
 package com.example.Reto3G14.Modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-/**
- *
- * @author MG1323
- */
+import javax.persistence.*;
+import java.util.List;
+
 @Entity
 @Table(name ="cabin")
 public class Cabin {
-     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private Integer id;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
     private String brand;
     private Integer rooms;
     private String description;
-     
-     
-     @ManyToOne
-     @JoinColumn(name = "categoryId")
-     @JsonIgnoreProperties("cabins")
-     private Category category;
-     
-     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cabin")
-     @JsonIgnoreProperties({"cabin","client"})
-     private List<Message> messages;
-     
-     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cabin")
-     @JsonIgnoreProperties({"cabin","messages"})
-     private List<Reservation> reservations;
+    @ManyToOne
+    @JoinColumn(name = "categoryId")
+    @JsonIgnoreProperties("cabins")
+    private Category category;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cabin")
+    @JsonIgnoreProperties({"cabin","client"})
+    private List<Message> messages;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cabin")
+    @JsonIgnoreProperties({"cabin","messages"})
+    private List<Reservation> reservations;
 
     public Integer getId() {
         return id;
@@ -60,14 +47,6 @@ public class Cabin {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 
     public String getBrand() {
@@ -94,6 +73,14 @@ public class Cabin {
         this.description = description;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public List<Message> getMessages() {
         return messages;
     }
@@ -109,5 +96,4 @@ public class Cabin {
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
-
 }

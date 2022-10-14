@@ -30,7 +30,7 @@ public class Reservation {
 
      @ManyToOne
      @JoinColumn(name = "cabinId")
-     @JsonIgnoreProperties("reservations")
+     @JsonIgnoreProperties({"messages","reservations"})
      private Cabin cabin;
 
      @ManyToOne
@@ -72,19 +72,11 @@ public class Reservation {
         this.status = status;
     }
 
-    public Cabin getRoom() {
-        return cabin;
-    }
-
     public Cabin getCabin() {
         return cabin;
     }
 
     public void setCabin(Cabin cabin) {
-        this.cabin = cabin;
-    }
-
-    public void setRoom(Cabin cabin) {
         this.cabin = cabin;
     }
 
@@ -103,8 +95,6 @@ public class Reservation {
     public void setScore(String score) {
         this.score = score;
     }
-     
-     
 }
 
    

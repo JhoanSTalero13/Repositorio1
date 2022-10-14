@@ -5,29 +5,19 @@
 package com.example.Reto3G14.Modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-/**
- *
- * @author MG1323
- */
+import javax.persistence.*;
+import java.util.List;
+
 @Entity
 @Table(name = "category")
-
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String description;
-    
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="category")
     @JsonIgnoreProperties("category")
     private List<Cabin> cabins;

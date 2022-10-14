@@ -38,13 +38,39 @@ public class CabinService {
         }
     }
     public Cabin update(Cabin cabin){
-        if(cabin.getId()== null){
-            Optional<Cabin> cab= cabinRepository.getCabin(cabin.getId());
-            if(cab.isPresent()){
-                cabinRepository.save(cabin);
+        if(cabin.getId()!=null){
+            Optional<Cabin> e= cabinRepository.getCabin(cabin.getId());
+            if(!e.isEmpty()){
+                if(cabin.getName()!=null){
+                    e.get().setName(cabin.getName());
+                }
+                if(cabin.getBrand()!=null){
+                    e.get().setBrand(cabin.getBrand());
+                }
+                if(cabin.getRooms()!=null){
+                    e.get().setRooms(cabin.getRooms());
+                }
+                if(cabin.getDescription()!=null){
+                    e.get().setDescription(cabin.getDescription());
+                }
+                if(cabin.getCategory()!=null){
+                    e.get().setCategory(cabin.getCategory());
+                }
+                if(cabin.getMessages()!=null){
+                    e.get().setMessages(cabin.getMessages());
+                }
+                if(cabin.getReservations()!=null){
+                    e.get().setReservations(cabin.getReservations());
+                }
+
+                cabinRepository.save(e.get());
+                return e.get();
+            }else{
+                return cabin;
             }
+        }else{
+            return cabin;
         }
-        return cabin;
     }
 
      

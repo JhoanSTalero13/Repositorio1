@@ -53,6 +53,9 @@ public class CategoryService {
                 if(category.getName()!=null){
                     g.get().setName(category.getName());
                 }
+                if(category.getCabins()!=null){
+                    g.get().setCabins(category.getCabins());
+                }
                 return categoryRepository.save(g.get());
             }
         }
